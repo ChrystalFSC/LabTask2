@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LabTask2.ViewModels.Pages"
+             x:Class="LabTask2.Views.MainPage.MainPage"
+             x:DataType="vm:MainPageViewModel">
+
+    <Grid RowDefinitions="Auto,*" Padding="0">
+
+        <!-- Header -->
+        <Grid Grid.Row="0">
+            <BoxView HeightRequest="50">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#6366F1" Offset="0.0"/>
+                        <GradientStop Color="#8B5CF6" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <Label Text="BCS23090006 CHRYSTAL FU SZE CHANG"
+                   FontSize="17"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="20,0"/>
+        </Grid>
+
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" Padding="0,10,0,20">
+
+                <!-- Pet Image -->
+                <Border Grid.Row="0"
+                        Padding="0"
+                        Margin="20,10,20,20"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20"
+                        HeightRequest="320"
+                        BackgroundColor="White">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Opacity="0.12" Radius="15" Offset="0,6"/>
+                    </Border.Shadow>
+                    <Grid>
+                        <Image Source="{Binding Model.Image}" Aspect="AspectFill"/>
+                        <BoxView VerticalOptions="End" HeightRequest="60" Opacity="0.3">
+                            <BoxView.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="Transparent" Offset="0.0"/>
+                                    <GradientStop Color="Black" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+                    </Grid>
+                </Border>
+
+                <!-- Pet Info -->
+                <Border Grid.Row="1"
+                        Padding="24,20"
+                        Margin="20,0,20,15"
+                        StrokeThickness="1"
+                        Stroke="#E5E7EB"
+                        StrokeShape="RoundRectangle 20"
+                        BackgroundColor="White">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Opacity="0.08" Radius="12" Offset="0,4"/>
+                    </Border.Shadow>
+                    <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+
+                        <!-- Name -->
+                        <Label Grid.Row="0" Grid.Column="0"
+                               Text="{Binding Model.Hello}"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="#111827"/>
+
+                        <!-- Gender -->
+                        <Border Grid.Row="0" Grid.Column="1"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 18"
+                                BackgroundColor="#DBEAFE"
+                                VerticalOptions="Center">
+                            <Label Text="♂"
+                                   FontSize="20"
+                                   TextColor="#3B82F6"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Border>
+
+                        <!-- Breed and Age -->
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2"
+                              ColumnDefinitions="*,Auto"
+                              Margin="0,8,0,0">
+                            <Border Grid.Column="0"
+                                    Padding="12,6"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="#F3F4F6"
+                                    HorizontalOptions="Start">
+                                <Label Text="{Binding Model.Welcome}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#6B7280"/>
+                            </Border>
+
+                            <Border Grid.Column="1"
+                                    Padding="12,6"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="#FEF3C7">
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="🕐"
+                                           FontSize="14"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="3 months"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="#92400E"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </Grid>
+
+                        <!-- Location -->
+                        <Border Grid.Row="2" Grid.ColumnSpan="2"
+                                Padding="12,10"
+                                Margin="0,12,0,0"
+                                StrokeThickness="1"
+                                Stroke="#E5E7EB"
+                                StrokeShape="RoundRectangle 10"
+                                BackgroundColor="#FAFAFA">
+                            <HorizontalStackLayout Spacing="8">
+                                <Label Text="📍"
+                                       FontSize="16"
+                                       VerticalOptions="Center"/>
+                                <Label Text="3B, Lorong 88, Taman Rantau Panjang, 96000 Sibu, Sarawak"
+                                       FontSize="13"
+                                       TextColor="#6B7280"
+                                       LineBreakMode="WordWrap"
+                                       VerticalOptions="Center"
+                                       MaximumWidthRequest="280"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Owner Info -->
+                <Border Grid.Row="2"
+                        Margin="20,0,20,15"
+                        Padding="20"
+                        StrokeThickness="1"
+                        Stroke="#E5E7EB"
+                        StrokeShape="RoundRectangle 20"
+                        BackgroundColor="White">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Opacity="0.08" Radius="12" Offset="0,4"/>
+                    </Border.Shadow>
+                    <Grid ColumnDefinitions="60,*,Auto" RowDefinitions="Auto,Auto,Auto">
+
+                        <Border Grid.Column="0"
+                                Grid.RowSpan="2"
+                                Padding="3"
+                                StrokeThickness="3"
+                                Stroke="#8B5CF6"
+                                StrokeShape="RoundRectangle 30"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                VerticalOptions="Start">
+                            <Border Padding="0"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 27">
+                                <Image Source="owner.jpg" Aspect="AspectFill"/>
+                            </Border>
+                        </Border>
+
+                        <Label Grid.Column="1" Grid.Row="0"
+                               Text="G-Dragon"
+                               FontSize="17"
+                               FontAttributes="Bold"
+                               TextColor="#111827"
+                               VerticalOptions="End"
+                               Margin="15,0,0,0"/>
+
+                        <Border Grid.Column="1" Grid.Row="1"
+                                Padding="8,4"
+                                Margin="15,6,0,0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 6"
+                                BackgroundColor="#F0FDF4"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start">
+                            <Label Text="Owner"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="#15803D"/>
+                        </Border>
+
+                        <Border Grid.Column="2" Grid.Row="0"
+                                Padding="10,6"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                BackgroundColor="#F9FAFB"
+                                VerticalOptions="Center">
+                            <Label Text="📅 21.10.2025"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="#6B7280"/>
+                        </Border>
+
+                        <Label Grid.Row="2" Grid.ColumnSpan="3"
+                               Padding="0,15,0,0"
+                               Text="Golden is a 3 months female, resembling a Golden mix. She has fluffy fur, a bushy tail, and the sweetest temperament you can imagine. 💛"
+                               FontSize="14"
+                               TextColor="#6B7280"
+                               LineBreakMode="WordWrap"
+                               LineHeight="1.4"/>
+                    </Grid>
+                </Border>
+
+                <!-- Buttons -->
+                <Grid Grid.Row="4" Padding="20,0,20,10"
+                      ColumnDefinitions="70,*" ColumnSpacing="15">
+
+                    <!-- Favorite Button -->
+                    <Border Grid.Column="0"
+                            x:Name="FavoriteButton"
+                            Padding="0"
+                            StrokeThickness="2"
+                            Stroke="#E5E7EB"
+                            StrokeShape="RoundRectangle 35"
+                            HeightRequest="60"
+                            WidthRequest="60"
+                            BackgroundColor="White">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ToggleFavoriteCommand}"
+                                                  Tapped="OnFavoriteTappedAnimationOnly"/>
+                        </Border.GestureRecognizers>
+                        <Label x:Name="FavoriteIcon"
+                               Text="{Binding FavoriteIconText}"
+                               FontSize="28"
+                               TextColor="#EF4444"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- Adoption Button -->
+                    <Border Grid.Column="1"
+                            x:Name="AdoptionButton"
+                            Padding="0"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 30"
+                            HeightRequest="60">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FBBF24" Offset="0.0"/>
+                                <GradientStop Color="#F59E0B" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AdoptCommand}"
+                                                  Tapped="OnAdoptionTappedAnimationOnly"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{Binding Message}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>
